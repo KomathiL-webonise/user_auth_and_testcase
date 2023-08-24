@@ -1,0 +1,29 @@
+
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  port: 5432
+  username: webonise
+  password: webonise123#
+
+ 
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: rails_dev
+
+
+production:
+  <<: *default
+  database: user_auth_and_testcase
+  username: micro
+  password: <%= ENV["MICRO_DATABASE_PASSWORD"] %>
+
+test:
+  <<: *default
+  database: user_auth_and_testcase_test
+
+ 
+  
